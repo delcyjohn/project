@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<title>login</title>
+		<style>
+	 		#head {color: #e600e6;
+	 				margin-top: 25px;
+	 				font-size: 25px;
+	 				font-family:"Times new roman",Times,serif;}
+	 				
+				
+			body {background-image:url(http://cdn.shopify.com/s/files/1/1269/3115/products/floating-on-the-water-mermaid-oil-painting-home-decor-canvas-no-frame-pictures-for-living-room-hdartisan-store-1313494990888_600x.jpg?v=1515477555);
+				background-repeat: no-repeat;
+				background-size:cover;
+				}
+			#log {color:black;}
+  		</style>	
+	</head>
+
+		<body>
+			<center>
+				<div id="head"><i><b><h2>COLORED CANVAS</h2></b></i>
+				</div>
+				<p>Creativity takes courage....</p>
+				<nav class="navbar navbar-inverse">
+  					<div class="container-fluid">
+    					<ul class="nav navbar-nav">
+      					<li class="active"><a href="/home/"><span class="glyphicon glyphicon-home">home</span></a></li>
+    					</ul>
+				  <ul class="nav navbar-nav navbar-right">
+        			  <li> <a href="/register/"><span class="glyphicon glyphicon-user">Sign Up</span></a></li>
+  
+    				</ul>
+				</nav>
+				<div>
+					{% block content %}
+  					<h2>Login</h2>
+  					<form method="post" onsubmit="return get_action();" >
+    						{% csrf_token %}
+   		 					{{ form.as_p }}
+
+
+   		 					<script src='https://www.google.com/recaptcha/api.js'></script>
+	    					<div class="g-recaptcha" data-sitekey="6LfMI3UUAAAAAOGobdQdfOVDV0LklKxghB-n_Ky-" data-callback="verifyCaptcha"></div>
+	<div id="g-recaptcha-error"></div>
+	    					</div>
+
+    						<a href="/adminhome/"><button>Login</button></a>
+							<a href="/password_reset/" id="log">Reset Password ?</a></br>
+  					</form><br>
+  					<p><strong>-- OR --</strong></p>
+  					<a href="{% url 'social:begin' 'github' %}"><img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" height="50" width="50";><br>
+  					<a href="{% url 'social:begin' 'twitter' %}">Login with Twitter</a>
+
+					{% endblock %}
+				</div>
+				
+			</center>
+	
+		</body>
+</html>
+<script>
+	function get_action(form)
+	{
+	    var v = grecaptcha.getResponse();
+	    if(v.length == 0)
+	    {
+	        document.getElementById('g-recaptcha-error').innerHTML="You can't leave Captcha Code empty";
+	        return false;
+	    }
+	    else
+	    {
+	        document.getElementById('g-recaptcha-error').innerHTML="Captcha completed";
+	        return true;
+	    }
+	}
+	function verifyCaptcha(){
+	    document.getElementById('g-recaptcha-error').innerHTML = '';
+	}
+</script>
+

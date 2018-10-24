@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		 <meta charset="utf-8">
+		 <meta name="viewport" content="width=device-width, initial-scale=1">
+		 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		 <title>home page</title>
+		 <style>
+			#list {color:'#000066'}
+			#head {color: #e600e6;
+	 			margin-top: 25px;
+	 			font-size: 25px;
+	 			font-family:"Times new roman",Times,serif;}
+							
+			body {background-image:url(http://cdn.shopify.com/s/files/1/1269/3115/products/floating-on-the-water-mermaid-oil-painting-home-decor-canvas-no-frame-pictures-for-living-room-hdartisan-store-1313494990888_600x.jpg?v=1515477555);
+				background-repeat: no-repeat;
+				background-size:cover;}
+					
+  		</style>	
+	</head>
+
+		<body>
+			<center>
+				<div id="head"><i><b><h2>COLORED CANVAS</h2></b></i>
+				</div>
+				<p>Creativity takes courage....</p>
+			</center>
+			<nav class="navbar navbar-inverse">
+  				<div class="container-fluid">
+    
+    				<ul class="nav navbar-nav">
+      					<li class="active"><a href="/home/"><span class="glyphicon glyphicon-home">home</span></a></li>
+      					<li><a href="/adminhome/"><span class="glyphicon glyphicon-refresh">Refresh</span></a></li>
+      					<li> <a href="/adminhome/"><span class="glyphicon glyphicon-delete">update</span></a></li>
+    				</ul>
+   					<ul class="nav navbar-nav navbar-right">
+        				<li> <a href="/login/"><span class="glyphicon glyphicon-user">{{user.username}}</span></a></li>
+       					<li> <a href="/logout/"><span class="glyphicon glyphicon-user">Log Out</span></a></li>
+    				</ul>
+  				</div>
+			</nav>
+
+		    <div id='list'>
+			<table>
+		    		<table border="5">
+		<tr><th colspan="10"><center><h3>User Details</center></h3></th></tr>
+		<tr>
+			<th>username</th>
+			<th>email</th>
+			<th>first_name</th>
+			<th>last_name</th>
+			<th>Adress</th>
+			<th>Nationality</th>
+			<th>Phone</th>
+			<th>Registration_type</th>
+					
+		</tr>
+				{% for s in object_list %}
+				<tr>	
+						<td>{{s.user.username}}</td>
+						<td>{{s.user.email}}</td>
+						<td>{{s.user.first_name}}</td>
+						<td>{{s.user.last_name}}</td>
+
+
+						<td>{{s.Adress}}</td>
+						<td>{{s.Nationality}}</td>
+						<td>{{s.Phone}}</td>
+						<td>{{s.Registration_type}}</td>
+						<td><a href="{% url 'adminupdate' s.id %}"><button type="button">Delete</button></a></td>
+					</tr>
+				{% endfor %}
+				      
+	</table>
+
+		    </div>  
+				</table>
+			</div>
+
+		</body>
+</html>
+	
+

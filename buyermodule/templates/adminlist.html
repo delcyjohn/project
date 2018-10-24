@@ -1,0 +1,26 @@
+	<table border="5">
+		<tr><th colspan="10"><center><h3>Painter Details</center></h3></th></tr>
+		<tr>
+			<th>painting_name</th>
+			<th>painting_type</th>
+			<th>painting_size</th>
+			<th>painter_name</th>
+			<th>painting_prize</th>
+			<th>painting_picture</th>
+			<th>created_date</th>
+					
+		</tr>
+		{% for s in object_list %}
+			<tr>	
+				<td><a href="{% url 'detail' s.id %}">{{s.painting_name}}</td>
+				<td>{{s.painting_type}}</td>
+				<td>{{s.painting_size}}</td>
+				<td>{{s.painter_name}}</td>
+				<td>{{s.painting_prize}}</td>
+				<td>{{s.painting_picture}}</td>
+				<td>{{s.created_date}}</td>
+				<td><a href="{% url 'admindelete' x.id %}"><button type="button">Delete</button></td>
+			</tr>
+		{% endfor %}
+		      
+	</table>

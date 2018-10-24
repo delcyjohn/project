@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<title>home page</title>
+		<style>
+			#head {color: #e600e6;
+	 			margin-top: 25px;
+	 			font-size: 25px;
+	 			font-family:"Times new roman",Times,serif;}
+							
+			body {background-image:url(http://cdn.shopify.com/s/files/1/1269/3115/products/floating-on-the-water-mermaid-oil-painting-home-decor-canvas-no-frame-pictures-for-living-room-hdartisan-store-1313494990888_600x.jpg?v=1515477555);
+				background-repeat: no-repeat;
+				background-size:cover;}
+					
+  		</style>	
+	</head>
+
+		<body>
+			<center>
+				<div id="head"><i><b><h2>COLORED CANVAS</h2></b></i>
+				</div>
+				<p>Creativity takes courage....</p>
+			</center>
+			<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/home/"><span class="glyphicon glyphicon-home">home</span></a></li>
+      <li><a href="/painter/"><span class="glyphicon glyphicon-refresh">Refresh</span></a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+		      <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> {{ user.username }}Logout</a></li>
+		    </ul>
+		  </div>
+		</nav>
+	{%load static %}
+<div class="container">
+<table class="table table-hover">
+
+	{% for x in object_list %}
+		<tr>
+		<td><img src="{{x.painting_picture.url}}" height="100px" width="100px"></td>
+		<td>{{x.painting_name}}</td>
+		<td>{{x.painting_type}}</td>
+		<td>{{x.painting_prize}}</td>
+		<td><a href='/payment/'><button type="button">order</button></td></a>
+		
+	
+		</tr>
+	{% endfor %}
+</table>
+</form>
+</body>
